@@ -1,0 +1,2403 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Escape Room Educativo - Sala 2: O Teclado Misterioso</title>
+  <meta name="description" content="Sala 2 do Escape Room Investigativo para alunos do 6º ano. Pratique digitação, Shift, acentuação e atalhos de teclado (Ctrl+C, Ctrl+V, Ctrl+F)." />
+  <meta property="og:title" content="Escape Room Educativo - Sala 2: O Teclado Misterioso" />
+  <meta property="og:description" content="Investigação no escritório do suspeito: decifre pistas e domine o teclado!" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <style>
+    /* ========================================================
+       PALETA DE CORES QUENTES, TIPOGRAFIA E ESTILOS GERAIS
+       Clean UI: Laranja, Terracota, Âmbar, Off-White e Monospace
+       ======================================================== */
+    :root {
+      --bg-warm: #FAF6F0;
+      --bg-card: #FFFFFF;
+      --bg-card-subtle: #FFFDF9;
+      --terracotta: #C85A32;
+      --terracotta-dark: #A84521;
+      --terracotta-light: #FBF0EB;
+      --warm-orange: #E87738;
+      --warm-orange-light: #FFF4EC;
+      --amber: #D97706;
+      --amber-light: #FEF3C7;
+      --amber-border: #F59E0B;
+      --text-main: #292524;
+      --text-muted: #665E57;
+      --border-warm: #E7DFD5;
+      --border-focus: #E87738;
+      --success: #15803D;
+      --success-bg: #DCFCE7;
+      --error: #DC2626;
+      --error-bg: #FEE2E2;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --shadow-subtle: 0 4px 12px rgba(168, 69, 33, 0.05);
+      --shadow-card: 0 10px 25px -5px rgba(168, 69, 33, 0.08), 0 8px 10px -6px rgba(168, 69, 33, 0.04);
+      --shadow-hover: 0 14px 30px -4px rgba(168, 69, 33, 0.14);
+      --shadow-float: 0 20px 35px -5px rgba(0, 0, 0, 0.2);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background-color: var(--bg-warm);
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(232, 119, 56, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(200, 90, 50, 0.05) 0%, transparent 40%);
+      color: var(--text-main);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 890px;
+      margin: 0 auto;
+      padding: 24px 20px 48px;
+      flex: 1;
+    }
+
+    /* Cabeçalho Investigativo */
+    header.header {
+      background: var(--bg-card);
+      border: 1px solid var(--border-warm);
+      border-radius: var(--radius-lg);
+      padding: 24px 28px;
+      box-shadow: var(--shadow-card);
+      margin-bottom: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .badge-case {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--terracotta-light);
+      color: var(--terracotta-dark);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(200, 90, 50, 0.2);
+    }
+
+    .header-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .sound-btn, .hint-quick-btn {
+      background: var(--bg-warm);
+      border: 1px solid var(--border-warm);
+      color: var(--text-muted);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.3s ease;
+    }
+
+    .sound-btn:hover, .hint-quick-btn:hover {
+      background: #FFFFFF;
+      color: var(--terracotta);
+      border-color: var(--terracotta);
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .header-title-box h1 {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--terracotta-dark);
+      letter-spacing: -0.5px;
+      line-height: 1.25;
+      margin-bottom: 6px;
+    }
+
+    .header-title-box p {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    /* Barra de Progresso das 5 Etapas Sequenciais */
+    .progress-bar-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border-warm);
+    }
+
+    .step-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      position: relative;
+    }
+
+    .step-pill {
+      height: 8px;
+      width: 100%;
+      background: #EFE9DF;
+      border-radius: 999px;
+      transition: background-color 0.4s ease;
+    }
+
+    .step-item.active .step-pill {
+      background: var(--warm-orange);
+    }
+
+    .step-item.completed .step-pill {
+      background: var(--success);
+    }
+
+    .step-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .step-item.active .step-label {
+      color: var(--terracotta-dark);
+    }
+
+    .step-item.completed .step-label {
+      color: var(--success);
+    }
+
+    /* Painéis de Enigma (Cards com Cantos Arredondados e Sombras Suaves) */
+    .enigma-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-warm);
+      border-radius: var(--radius-lg);
+      padding: 32px 30px;
+      box-shadow: var(--shadow-card);
+      margin-bottom: 24px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .enigma-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .enigma-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .enigma-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-md);
+      background: var(--terracotta-light);
+      color: var(--terracotta);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    .enigma-title {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--text-main);
+      line-height: 1.25;
+    }
+
+    .enigma-subtitle {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .context-box {
+      background: var(--bg-card-subtle);
+      border-left: 4px solid var(--terracotta);
+      padding: 16px 20px;
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      margin-bottom: 22px;
+      color: var(--text-main);
+      font-size: 0.98rem;
+    }
+
+    .highlight-card {
+      background: var(--warm-orange-light);
+      border: 1px dashed var(--warm-orange);
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+      margin-bottom: 22px;
+    }
+
+    .highlight-card-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--terracotta-dark);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .highlight-card-content {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      background: #FFFFFF;
+      padding: 14px 16px;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(232, 119, 56, 0.25);
+      color: #9A3412;
+      font-size: 0.98rem;
+      line-height: 1.6;
+      word-break: break-word;
+      user-select: text;
+    }
+
+    /* Formulários e Elementos de Entrada */
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      display: block;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text-main);
+      margin-bottom: 8px;
+    }
+
+    .form-hint {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    textarea.input-field {
+      width: 100%;
+      min-height: 110px;
+      padding: 14px 16px;
+      border: 2px solid var(--border-warm);
+      border-radius: var(--radius-md);
+      font-family: inherit;
+      font-size: 1rem;
+      color: var(--text-main);
+      background: #FFFFFF;
+      transition: all 0.3s ease;
+      resize: vertical;
+    }
+
+    input[type="text"].input-field,
+    input[type="number"].input-field {
+      width: 100%;
+      padding: 14px 18px;
+      border: 2px solid var(--border-warm);
+      border-radius: var(--radius-md);
+      font-family: inherit;
+      font-size: 1.05rem;
+      color: var(--text-main);
+      background: #FFFFFF;
+      transition: all 0.3s ease;
+    }
+
+    .input-field:focus {
+      outline: none;
+      border-color: var(--border-focus);
+      box-shadow: 0 0 0 4px rgba(232, 119, 56, 0.15);
+    }
+
+    .input-field::placeholder {
+      color: #A8A29E;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--terracotta);
+      color: #FFFFFF;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 14px 26px;
+      border-radius: var(--radius-md);
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(200, 90, 50, 0.25);
+    }
+
+    .btn:hover {
+      background: var(--terracotta-dark);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    .btn-secondary {
+      background: #FFFFFF;
+      color: var(--terracotta);
+      border: 2px solid var(--terracotta);
+      box-shadow: none;
+    }
+
+    .btn-secondary:hover {
+      background: var(--terracotta-light);
+      border-color: var(--terracotta-dark);
+      color: var(--terracotta-dark);
+    }
+
+    /* Alertas e Mensagens de Feedback */
+    .alert {
+      padding: 14px 18px;
+      border-radius: var(--radius-md);
+      font-size: 0.92rem;
+      font-weight: 500;
+      margin-top: 16px;
+      display: none;
+      align-items: center;
+      gap: 10px;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .alert.show {
+      display: flex;
+    }
+
+    .alert-error {
+      background: var(--error-bg);
+      border: 1px solid #FCA5A5;
+      color: var(--error);
+    }
+
+    .alert-success {
+      background: var(--success-bg);
+      border: 1px solid #86EFAC;
+      color: var(--success);
+    }
+
+    .alert-info {
+      background: var(--warm-orange-light);
+      border: 1px solid #FDBA74;
+      color: #9A3412;
+    }
+
+    /* Teclado Badges */
+    .keyboard-badge-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 10px 0 16px;
+    }
+
+    .key-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #FFFFFF;
+      border: 1px solid #D6D3D1;
+      border-bottom: 3px solid #A8A29E;
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-main);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+
+    /* Terminal de Colar (Enigma 1 Parte 2) */
+    .paste-terminal-section {
+      background: #FDFBF8;
+      border: 2px dashed var(--warm-orange);
+      border-radius: var(--radius-md);
+      padding: 22px;
+      margin-top: 24px;
+      animation: slideDown 0.4s ease;
+    }
+
+    /* Cifra da Tecla Vizinha (Enigma 2) */
+    .cipher-display {
+      text-align: center;
+      background: #292524;
+      color: #FDE68A;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: 12px;
+      padding: 22px;
+      border-radius: var(--radius-md);
+      margin: 18px 0 24px;
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.5);
+      border: 2px solid #57534E;
+    }
+
+    .riddle-quote {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #431407;
+      background: #FFF7ED;
+      border-left: 5px solid var(--warm-orange);
+      padding: 18px 22px;
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      margin-bottom: 24px;
+      font-weight: 500;
+    }
+
+    /* Visualizador Interativo de Teclado (Enigma 2) */
+    .keyboard-interactive-helper {
+      margin-top: 20px;
+      background: #FAF7F2;
+      border: 1px solid var(--border-warm);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+    }
+
+    .keyboard-toggle-btn {
+      background: none;
+      border: none;
+      color: var(--terracotta);
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0;
+    }
+
+    .keyboard-toggle-btn:hover {
+      text-decoration: underline;
+    }
+
+    .keyboard-graphic {
+      margin-top: 14px;
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      background: #3D3835;
+      padding: 16px;
+      border-radius: 12px;
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.3);
+      user-select: none;
+    }
+
+    .kb-row {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .kb-key {
+      background: #ECE8E1;
+      border: 1px solid #D1C7BA;
+      border-bottom: 3px solid #A89C8C;
+      border-radius: 6px;
+      height: 38px;
+      min-width: 36px;
+      padding: 0 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #292524;
+      transition: all 0.2s ease;
+    }
+
+    .kb-key.highlight-cipher {
+      background: #FED7AA;
+      border-color: #FB923C;
+      border-bottom-color: #EA580C;
+      color: #9A3412;
+      box-shadow: 0 0 8px rgba(251, 146, 60, 0.7);
+    }
+
+    .kb-key.highlight-solution {
+      background: #BBF7D0;
+      border-color: #4ADE80;
+      border-bottom-color: #16A34A;
+      color: #14532D;
+    }
+
+    /* ========================================================
+       BARRA DE BUSCA CUSTOMIZADA NO JOGO (Ctrl + F interceptado)
+       ======================================================== */
+    .in-game-search-bar-wrap {
+      background: #FFFFFF;
+      border: 2px solid var(--warm-orange);
+      border-radius: var(--radius-md);
+      padding: 12px 16px;
+      box-shadow: var(--shadow-float);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      animation: popIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      position: sticky;
+      top: 16px;
+      z-index: 100;
+    }
+
+    .search-input-box {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      position: relative;
+    }
+
+    .search-input-field {
+      width: 100%;
+      padding: 10px 14px;
+      border: 2px solid var(--border-warm);
+      border-radius: var(--radius-sm);
+      font-size: 1rem;
+      color: var(--text-main);
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .search-input-field:focus {
+      border-color: var(--terracotta);
+    }
+
+    .search-count-badge {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      white-space: nowrap;
+      background: var(--bg-warm);
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+
+    .search-close-btn {
+      background: none;
+      border: none;
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: all 0.2s ease;
+    }
+
+    .search-close-btn:hover {
+      background: #FEE2E2;
+      color: var(--error);
+    }
+
+    /* Destaque no texto com tag mark amarela */
+    mark.diary-highlight {
+      background-color: #FEF08A;
+      color: #854D0E;
+      font-weight: 800;
+      padding: 2px 4px;
+      border-radius: 4px;
+      box-shadow: 0 0 0 2px #FACC15;
+      animation: pulseHighlight 1s infinite alternate;
+    }
+
+    @keyframes pulseHighlight {
+      from { background-color: #FEF08A; }
+      to { background-color: #FDE047; }
+    }
+
+    /* Diário Digital do Suspeito (Enigma 3) */
+    .diary-container {
+      max-height: 330px;
+      overflow-y: auto;
+      border: 2px solid var(--border-warm);
+      border-radius: var(--radius-md);
+      padding: 18px 22px;
+      background: #FFFEFA;
+      margin: 18px 0 24px;
+      box-shadow: inset 0 2px 6px rgba(0,0,0,0.03);
+      scroll-behavior: smooth;
+    }
+
+    .diary-container::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .diary-container::-webkit-scrollbar-track {
+      background: #F5EFE6;
+      border-radius: 8px;
+    }
+
+    .diary-container::-webkit-scrollbar-thumb {
+      background: #D7CABB;
+      border-radius: 8px;
+    }
+
+    .diary-container::-webkit-scrollbar-thumb:hover {
+      background: var(--terracotta);
+    }
+
+    .diary-entry {
+      padding: 12px 14px;
+      border-bottom: 1px solid #EFE8DE;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #44403C;
+      transition: background-color 0.3s ease;
+    }
+
+    .diary-entry:last-child {
+      border-bottom: none;
+    }
+
+    .diary-entry-header {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--terracotta);
+      margin-bottom: 4px;
+    }
+
+    /* Dicas com Visual Post-It / Aviso (Timer 3 minutos) */
+    .post-it-hint {
+      display: none;
+      background: var(--amber-light);
+      border: 1px solid var(--amber-border);
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin-top: 24px;
+      position: relative;
+      box-shadow: 0 6px 16px rgba(217, 119, 6, 0.12);
+      animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .post-it-pin {
+      position: absolute;
+      top: -10px;
+      left: 24px;
+      width: 20px;
+      height: 20px;
+      background: var(--terracotta);
+      border-radius: 50%;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.25);
+    }
+
+    .post-it-title {
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: #92400E;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .post-it-text {
+      color: #78350F;
+      font-size: 0.95rem;
+      line-height: 1.55;
+      font-weight: 500;
+    }
+
+    /* ========================================================
+       ETAPA 4: RELATÓRIO FINAL PARA O GOOGLE DOCS (MONOSPACE)
+       ======================================================== */
+    .report-card-container {
+      background: #FFFFFF;
+      border: 2px solid #86EFAC;
+      border-radius: var(--radius-lg);
+      padding: 38px 30px;
+      box-shadow: var(--shadow-card);
+      text-align: center;
+      animation: fadeIn 0.5s ease;
+      display: none;
+    }
+
+    .victory-badge-large {
+      width: 76px;
+      height: 76px;
+      margin: 0 auto 18px;
+      background: #DCFCE7;
+      color: #15803D;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.3rem;
+      border: 3px solid #86EFAC;
+      box-shadow: 0 8px 20px rgba(22, 163, 74, 0.2);
+    }
+
+    .victory-title {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #14532D;
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+
+    .victory-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 640px;
+      margin: 0 auto 24px;
+    }
+
+    /* Caixa Oficial do Documento - Formato Estilizado com Monospace */
+    .official-document-box {
+      background: #FDFBF7;
+      border: 2px solid #D6CEBE;
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin: 0 auto 24px;
+      max-width: 700px;
+      text-align: left;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+      position: relative;
+    }
+
+    .official-doc-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid #EAE2D5;
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+    }
+
+    .doc-seal-badge {
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: #B45309;
+      background: #FEF3C7;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-family: inherit;
+    }
+
+    /* Exclusivamente fonte monospace no relatório */
+    .official-report-pre {
+      font-family: "Courier New", Courier, monospace;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #1C1917;
+      background: #FFFFFF;
+      padding: 20px 22px;
+      border-radius: 8px;
+      border: 1px solid #E2D9CD;
+      border-left: 5px solid var(--terracotta);
+      white-space: pre-wrap;
+      word-break: break-word;
+      user-select: all; /* Facilita a seleção rápida para Ctrl+C */
+      font-weight: 600;
+    }
+
+    .docs-instruction-box {
+      background: #EFF6FF;
+      border: 1px solid #BFDBFE;
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      margin: 20px auto 26px;
+      max-width: 700px;
+      text-align: left;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .docs-icon {
+      font-size: 1.6rem;
+      line-height: 1;
+    }
+
+    .docs-instruction-text h4 {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #1E40AF;
+      margin-bottom: 4px;
+    }
+
+    .docs-instruction-text p {
+      font-size: 0.92rem;
+      color: #1E3A8A;
+      line-height: 1.5;
+    }
+
+    .badges-earned {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 26px;
+    }
+
+    .earned-badge-card {
+      background: var(--bg-warm);
+      border: 1px solid var(--border-warm);
+      border-radius: var(--radius-md);
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-align: left;
+    }
+
+    .earned-badge-icon {
+      font-size: 1.4rem;
+    }
+
+    .earned-badge-info h4 {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .earned-badge-info p {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+    }
+
+    /* Container de Toasts / Mensagens Flutuantes */
+    .toast-container {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      pointer-events: none;
+    }
+
+    .toast {
+      background: #292524;
+      color: #FFFFFF;
+      padding: 14px 20px;
+      border-radius: var(--radius-md);
+      font-size: 0.92rem;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      animation: slideUpToast 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: opacity 0.3s ease;
+      pointer-events: auto;
+      max-width: 380px;
+    }
+
+    .toast-success {
+      background: #14532D;
+      border-left: 5px solid #4ADE80;
+    }
+
+    .toast-warning {
+      background: #78350F;
+      border-left: 5px solid #FBBF24;
+    }
+
+    .toast-error {
+      background: #7F1D1D;
+      border-left: 5px solid #F87171;
+    }
+
+    /* Canvas de Confete */
+    #confetti-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 9998;
+    }
+
+    /* Animações */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideUpToast {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.96); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* Responsividade */
+    @media (max-width: 640px) {
+      .container {
+        padding: 16px 12px 36px;
+      }
+      .enigma-card {
+        padding: 22px 16px;
+      }
+      .cipher-display {
+        font-size: 1.6rem;
+        letter-spacing: 6px;
+      }
+      .header-title-box h1 {
+        font-size: 1.4rem;
+      }
+      .in-game-search-bar-wrap {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .step-label {
+        font-size: 0.65rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Canvas de celebração com confetes -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Container de Notificações Toast -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <div class="container">
+    
+    <!-- Cabeçalho Principal -->
+    <header class="header">
+      <div class="header-top">
+        <span class="badge-case">
+          🔍 Caso #402: O Gabinete do Suspeito
+        </span>
+        <div class="header-controls">
+          <button class="sound-btn" id="sound-btn" title="Ativar ou desativar efeitos sonoros">
+            🔊 Som Ativo
+          </button>
+          <button class="hint-quick-btn" id="hint-toggle-btn" title="Visualizar pista ou status do timer de 3 minutos">
+            💡 Dica (3 min)
+          </button>
+        </div>
+      </div>
+
+      <div class="header-title-box">
+        <h1>Sala 2: O Teclado Misterioso</h1>
+        <p>Você entrou no escritório do suspeito para localizar o objeto desaparecido. Domine os segredos do teclado físico para destravar a saída e emitir o relatório oficial!</p>
+      </div>
+
+      <!-- Indicador das 5 Etapas Sequenciais -->
+      <div class="progress-bar-container">
+        <div class="step-item active" id="step-nav-0">
+          <div class="step-pill"></div>
+          <span class="step-label">0. Acesso</span>
+        </div>
+        <div class="step-item" id="step-nav-1">
+          <div class="step-pill"></div>
+          <span class="step-label">1. Bilhete</span>
+        </div>
+        <div class="step-item" id="step-nav-2">
+          <div class="step-pill"></div>
+          <span class="step-label">2. Cifra</span>
+        </div>
+        <div class="step-item" id="step-nav-3">
+          <div class="step-pill"></div>
+          <span class="step-label">3. O Diário</span>
+        </div>
+        <div class="step-item" id="step-nav-4">
+          <div class="step-pill"></div>
+          <span class="step-label">4. Relatório</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- ========================================================
+         ETAPA 0: Painel de Acesso (Digitação Exata e Bloqueio de Colagem)
+         ======================================================== -->
+    <section class="enigma-card" id="card-etapa-0">
+      <div class="enigma-header">
+        <div class="enigma-title-wrap">
+          <div class="enigma-icon">🔐</div>
+          <div>
+            <h2 class="enigma-title">Etapa 0: Painel de Acesso à Sala 2</h2>
+            <p class="enigma-subtitle">Segurança do Laboratório: Validação do Código Verificador da Sala 1</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="context-box">
+        Para destrancar o terminal do escritório do suspeito, você precisa autenticar sua credencial de investigador inserindo o código verificador gerado ao final da Sala 1.
+      </div>
+
+      <div class="highlight-card" style="border-style: solid;">
+        <div class="highlight-card-title">
+          📌 Dica em destaque na tela:
+        </div>
+        <div style="font-size: 1rem; color: #9A3412; font-weight: 600;">
+          "Digite o código verificador do relatório da Sala 1 exatamente como está (ative a tecla Caps Lock para as letras maiúsculas, digite o hífen e os números)."
+        </div>
+        <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 6px;">
+          Código de acesso fornecido pela central: <code style="background:#FFF; padding:2px 6px; border-radius:4px; font-weight:bold; color:var(--terracotta);">SALA2-BIBLIO-7492</code>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="input-codigo-acesso" class="form-label">
+          Código Verificador de Segurança:
+        </label>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <input 
+            type="text" 
+            id="input-codigo-acesso" 
+            class="input-field" 
+            placeholder="Digite aqui tecla por tecla (ex: SALA2-BIBLIO-7492)..."
+            style="max-width: 360px;"
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <button class="btn" id="btn-acessar-sala">
+            Desbloquear Acesso 🔓
+          </button>
+        </div>
+        <span class="form-hint" style="color: var(--terracotta);">
+          ⚠️ Trava de segurança ativada: A colagem de texto está <strong>estritamente bloqueada</strong>. Ative a tecla <strong>Caps Lock (Fixa)</strong> para manter as letras maiúsculas e digite tecla por tecla com hífens e números.
+        </span>
+      </div>
+
+      <div class="alert" id="alert-etapa-0"></div>
+
+      <!-- Dica Post-It da Etapa 0 -->
+      <div class="post-it-hint" id="postit-hint-0">
+        <div class="post-it-pin"></div>
+        <div class="post-it-title">
+          📌 Post-it de Ajuda do Inspetor (Etapa 0)
+        </div>
+        <div class="post-it-text">
+          O código é <strong>SALA2-BIBLIO-7492</strong>. Ative a tecla <strong>Caps Lock (Fixa)</strong> no seu teclado para travar todas as letras em maiúsculo (<em>SALA</em> e <em>BIBLIO</em>) sem precisar segurar o Shift. Digite o hífen <em>-</em> e os números <em>2</em> e <em>7492</em>. Lembre-se que a colagem está bloqueada!
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         ENIGMA 1: O Bilhete com Defeitos
+         (Parte 1: Correção com Bloqueio de Paste | Parte 2: Atalho Ctrl+C / Ctrl+V)
+         ======================================================== -->
+    <section class="enigma-card" id="card-enigma-1" style="display: none;">
+      <div class="enigma-header">
+        <div class="enigma-title-wrap">
+          <div class="enigma-icon">📝</div>
+          <div>
+            <h2 class="enigma-title">Enigma 1: O Bilhete com Defeitos</h2>
+            <p class="enigma-subtitle">Habilidades: Digitação manual, Shift, Backspace, Acentuação e Atalhos Ctrl+C/Ctrl+V</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="context-box">
+        Ao revistar a mesa de trabalho, você encontrou um bilhete deixado pelo suspeito no computador. O texto está cheio de erros de digitação (falta de maiúsculas, letras repetidas, falta de acentos).
+      </div>
+
+      <div class="highlight-card">
+        <div class="highlight-card-title">
+          📄 Bilhete original com erros exibido na tela:
+        </div>
+        <div class="highlight-card-content" id="original-note-text">
+          o suspeito deixouu um bilhete no computadr. a mensagem secreta foi digitada com o dedo escorregando: cada letra esta uma tecla para a direita da certa.
+        </div>
+      </div>
+
+      <!-- Parte 1: Correção e Digitação Manual (Paste Bloqueado) -->
+      <div class="form-group">
+        <label for="textarea-bilhete" class="form-label">
+          Mecânica Parte 1: Reescreva e corrija o texto no campo abaixo digitando tecla por tecla:
+        </label>
+        <textarea 
+          id="textarea-bilhete" 
+          class="input-field" 
+          placeholder="Digite aqui o texto corrigido... (Colagem bloqueada para treino manual de digitação)"
+          spellcheck="false"
+        ></textarea>
+        <span class="form-hint" style="color: var(--terracotta);">
+          ⚠️ Restrição de treino: A colagem foi <strong>bloqueada</strong>. Desative a tecla <strong>Caps Lock (Fixa)</strong>! Use a tecla <strong>Shift</strong> apenas para as duas iniciais maiúsculas ("O" e "A") e adicione o acento agudo em <strong>está</strong>. Não digite o texto em caixa alta!
+        </span>
+      </div>
+
+      <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+        <button class="btn" id="btn-verificar-texto">
+          Verificar Correção do Texto
+        </button>
+      </div>
+
+      <div class="alert" id="alert-enigma-1"></div>
+
+      <!-- Parte 2: Terminal de Validação de Atalho (Aparece após corrigir o texto) -->
+      <div class="paste-terminal-section" id="paste-terminal-section" style="display: none;">
+        <div class="highlight-card-title" style="color: var(--terracotta);">
+          ⚡ Mecânica Parte 2: Validação de Atalho (Ctrl + C / Ctrl + V)
+        </div>
+        <p style="font-size: 0.95rem; margin-bottom: 12px; color: var(--text-main);">
+          Perfeito! A correção manual está exata. Agora comprove sua agilidade com atalhos de teclado:
+        </p>
+
+        <div class="keyboard-badge-list">
+          <span class="key-badge">1. Selecione o texto corrigido acima</span>
+          <span class="key-badge">2. Pressione Ctrl + C (Copiar)</span>
+          <span class="key-badge">3. Venha para o campo abaixo e pressione Ctrl + V (Colar)</span>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 12px;">
+          <label for="input-paste-final" class="form-label">
+            Terminal de Validação (SÓ aceita se inserido via atalho de colar):
+          </label>
+          <input 
+            type="text" 
+            id="input-paste-final" 
+            class="input-field" 
+            placeholder="Clique aqui e pressione Ctrl + V (ou Cmd + V no Mac)..."
+            autocomplete="off"
+          />
+          <span class="form-hint" style="color: var(--terracotta);">
+            ⚠️ Atenção: A digitação direta manual está desativada neste terminal. Ele só valida respostas coladas!
+          </span>
+        </div>
+        <div class="alert" id="alert-paste-terminal"></div>
+      </div>
+
+      <!-- Dica Post-It do Enigma 1 -->
+      <div class="post-it-hint" id="postit-hint-1">
+        <div class="post-it-pin"></div>
+        <div class="post-it-title">
+          📌 Post-it de Dica do Inspetor (Enigma 1)
+        </div>
+        <div class="post-it-text">
+          O texto exato é:<br>
+          <em>"O suspeito deixou um bilhete no computador. A mensagem secreta foi digitada com o dedo escorregando: cada letra está uma tecla para a direita da certa."</em><br>
+          Importante: <strong>Desative o Caps Lock!</strong> Não digite em caixa alta. Apenas as iniciais "O" e "A" são maiúsculas (com Shift), e o restante em minúsculas com o acento em "está".
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         ENIGMA 2: A Cifra da Tecla Vizinha (Mapeamento do Teclado Físico)
+         ======================================================== -->
+    <section class="enigma-card" id="card-enigma-2" style="display: none;">
+      <div class="enigma-header">
+        <div class="enigma-title-wrap">
+          <div class="enigma-icon">⌨️</div>
+          <div>
+            <h2 class="enigma-title">Enigma 2: A Cifra da Tecla Vizinha</h2>
+            <p class="enigma-subtitle">Habilidades: Reconhecimento do teclado físico e raciocínio lógico espacial</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="context-box">
+        A pista do bilhete dizia que <em>"cada letra está uma tecla para a direita da certa."</em>
+      </div>
+
+      <div class="cipher-display" id="cipher-text-display">
+        STWIOBP
+      </div>
+
+      <div class="riddle-quote">
+        "Os dedos do suspeito escorregaram. Para voltar ao lugar certo, siga o caminho oposto ao do erro: vá para o lado onde começa cada linha que você lê. Olhe o seu teclado: a resposta está embaixo dos seus dedos."
+      </div>
+
+      <div class="form-group">
+        <label for="input-cifra" class="form-label">
+          Qual é a palavra secreta original decifrada?
+        </label>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <input 
+            type="text" 
+            id="input-cifra" 
+            class="input-field" 
+            placeholder="Digite a palavra que você decifrou no teclado..."
+            style="flex: 1; min-width: 260px;"
+            autocomplete="off"
+          />
+          <button class="btn" id="btn-validar-cifra">
+            Validar Decodificação
+          </button>
+        </div>
+        <span class="form-hint">
+          Olhe para o seu teclado físico: para cada letra da cifra STWIOBP, digite a tecla imediatamente à esquerda!
+        </span>
+      </div>
+
+      <div class="alert" id="alert-enigma-2"></div>
+
+      <!-- Apoio Visual: Mini-Teclado Físico -->
+      <div class="keyboard-interactive-helper">
+        <button class="keyboard-toggle-btn" id="btn-toggle-keyboard">
+          <span>⌨️</span> <span id="label-toggle-kb">Mostrar Mapa do Teclado (Ajuda Visual)</span>
+        </button>
+
+        <div class="keyboard-graphic" id="keyboard-graphic-box">
+          <div class="kb-row">
+            <div class="kb-key" data-key="Q">Q</div>
+            <div class="kb-key highlight-cipher" data-key="W">W</div>
+            <div class="kb-key" data-key="E">E</div>
+            <div class="kb-key highlight-solution" data-key="R">R</div>
+            <div class="kb-key highlight-cipher" data-key="T">T</div>
+            <div class="kb-key" data-key="Y">Y</div>
+            <div class="kb-key highlight-solution" data-key="U">U</div>
+            <div class="kb-key highlight-cipher" data-key="I">I</div>
+            <div class="kb-key highlight-cipher" data-key="O">O</div>
+            <div class="kb-key highlight-cipher" data-key="P">P</div>
+          </div>
+          <div class="kb-row">
+            <div class="kb-key highlight-solution" data-key="A">A</div>
+            <div class="kb-key highlight-cipher" data-key="S">S</div>
+            <div class="kb-key" data-key="D">D</div>
+            <div class="kb-key" data-key="F">F</div>
+            <div class="kb-key" data-key="G">G</div>
+            <div class="kb-key" data-key="H">H</div>
+            <div class="kb-key" data-key="J">J</div>
+            <div class="kb-key" data-key="K">K</div>
+            <div class="kb-key" data-key="L">L</div>
+            <div class="kb-key" data-key="Ç">Ç</div>
+          </div>
+          <div class="kb-row">
+            <div class="kb-key" data-key="Z">Z</div>
+            <div class="kb-key" data-key="X">X</div>
+            <div class="kb-key" data-key="C">C</div>
+            <div class="kb-key highlight-solution" data-key="V">V</div>
+            <div class="kb-key highlight-cipher" data-key="B">B</div>
+            <div class="kb-key" data-key="N">N</div>
+            <div class="kb-key" data-key="M">M</div>
+          </div>
+          <div style="color: #FED7AA; font-size: 0.78rem; text-align: center; margin-top: 8px;">
+            Laranja = Teclas digitadas com erro pelo suspeito (STWIOBP). Encontre a vizinha à esquerda de cada uma!
+          </div>
+        </div>
+      </div>
+
+      <!-- Dica Post-It do Enigma 2 -->
+      <div class="post-it-hint" id="postit-hint-2">
+        <div class="post-it-pin"></div>
+        <div class="post-it-title">
+          📌 Post-it de Dica do Inspetor (Enigma 2)
+        </div>
+        <div class="post-it-text" id="postit-text-2">
+          Pegue a letra S na cifra. Qual tecla está logo à esquerda dela no teclado?
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         ENIGMA 3: O Diário do Suspeito (Busca Customizada com Ctrl+F)
+         ======================================================== -->
+    <section class="enigma-card" id="card-enigma-3" style="display: none;">
+      <div class="enigma-header">
+        <div class="enigma-title-wrap">
+          <div class="enigma-icon">🔎</div>
+          <div>
+            <h2 class="enigma-title">Enigma 3: O Diário do Suspeito</h2>
+            <p class="enigma-subtitle">Habilidades: Atalho de Busca no Sistema (Ctrl + F ou Cmd + F)</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="context-box">
+        Você abriu o diário digital do suspeito no computador. Há cerca de 25 anotações irrelevantes sobre a rotina da escola. Ler tudo demoraria tempo demais!
+      </div>
+
+      <div class="riddle-quote" style="border-left-color: var(--amber); background: #FFFBEB;">
+        "No meio de tanto texto, existe uma lupa. Pressione as teclas Ctrl e F juntas para abrir a busca do sistema. Procure a palavra que você decifrou."
+      </div>
+
+      <!-- Atalho auxiliar para acionar busca -->
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 10px;">
+        <span style="font-size: 0.88rem; color: var(--text-muted); font-weight: 600;">
+          ⌨️ Pressione <strong>Ctrl + F</strong> (ou <strong>Cmd + F</strong>) no teclado para chamar a busca customizada!
+        </span>
+        <button class="sound-btn" id="btn-trigger-search" style="background: #FFFFFF; border-color: var(--warm-orange); color: var(--terracotta);">
+          🔍 Abrir Barra de Busca (Ctrl + F)
+        </button>
+      </div>
+
+      <!-- BARRA DE BUSCA CUSTOMIZADA NO JOGO (Intercepa Ctrl+F nativo) -->
+      <div class="in-game-search-bar-wrap" id="in-game-search-bar" style="display: none;">
+        <div style="font-size: 1.2rem; color: var(--warm-orange);">🔍</div>
+        <div class="search-input-box">
+          <input 
+            type="text" 
+            id="custom-search-input" 
+            class="search-input-field" 
+            placeholder="Digite a palavra para localizar no diário (ex: arquivo)..."
+            autocomplete="off"
+          />
+        </div>
+        <span class="search-count-badge" id="search-result-count">0 encontrados</span>
+        <button class="search-close-btn" id="btn-close-search" title="Fechar busca (Esc)">✕</button>
+      </div>
+
+      <!-- Diário Digital com 25 parágrafos fictícios -->
+      <div class="diary-container" id="diary-box">
+        <div class="diary-entry" data-p="1">
+          <div class="diary-entry-header">Entrada #01 - Segunda-feira, 07:45</div>
+          Cheguei na escola e o portão estava quase fechando. O zelador me deu bom dia e avisou que a máquina de café quebrou novamente. Tive que beber água do bebedouro do pátio principal antes de subir para a sala.
+        </div>
+        <div class="diary-entry" data-p="2">
+          <div class="diary-entry-header">Entrada #02 - Segunda-feira, 09:15</div>
+          A aula de matemática foi sobre frações e números decimais. Esqueci minha régua no armário do corredor e tive que pedir uma emprestada ao colega da carteira ao lado.
+        </div>
+        <div class="diary-entry" data-p="3">
+          <div class="diary-entry-header">Entrada #03 - Segunda-feira, 11:30</div>
+          No recreio, comi um lanche natural de queijo e conversei sobre o campeonato de queimada. A quadra poliesportiva estava escorregadia por causa da garoa fina da manhã.
+        </div>
+        <div class="diary-entry" data-p="4">
+          <div class="diary-entry-header">Entrada #04 - Terça-feira, 08:00</div>
+          A professora de ciências pediu para organizarmos as equipes para a feira de sustentabilidade. Anotei as ideias no meu caderno espiral com caneta azul sem tampa.
+        </div>
+        <div class="diary-entry" data-p="5">
+          <div class="diary-entry-header">Entrada #05 - Terça-feira, 10:20</div>
+          Alguém deixou uma mochila azul esquecida no banco de madeira perto da biblioteca. Avisei na secretaria para que pudessem encontrar o dono antes da saída.
+        </div>
+        <div class="diary-entry" data-p="6">
+          <div class="diary-entry-header">Entrada #06 - Terça-feira, 12:40</div>
+          Fui até o refeitório e o cardápio do almoço era arroz, feijão preto e salada de tomate com alface. O suco de maracujá estava bem gelado e doce na medida certa.
+        </div>
+        <div class="diary-entry" data-p="7">
+          <div class="diary-entry-header">Entrada #07 - Quarta-feira, 07:50</div>
+          Dia nublado e trânsito lento na avenida principal da cidade. Quase perdi o início da chamada da primeira aula de geografia no segundo andar do bloco C.
+        </div>
+        <div class="diary-entry" data-p="8">
+          <div class="diary-entry-header">Entrada #08 - Quarta-feira, 09:40</div>
+          Estudamos relevo, planaltos e bacias hidrográficas brasileiras. Desenhei o mapa no caderno com lápis de cor verde e marrom apontados na hora.
+        </div>
+        <div class="diary-entry" data-p="9">
+          <div class="diary-entry-header">Entrada #09 - Quarta-feira, 11:15</div>
+          O sino tocou cinco minutos antes do previsto por conta de um teste no sistema de alarmes sonoros da escola. Todos os alunos ficaram confusos no corredor.
+        </div>
+        <div class="diary-entry" data-p="10">
+          <div class="diary-entry-header">Entrada #10 - Quinta-feira, 08:10</div>
+          A aula de educação física foi na pista de atletismo. Fizemos alongamento com os braços e corremos três voltas completas em volta do campo de futebol society.
+        </div>
+        <div class="diary-entry" data-p="11">
+          <div class="diary-entry-header">Entrada #11 - Quinta-feira, 10:05</div>
+          Troquei o cadarço do meu tênis que havia desfiado durante o exercício. Guardei a tesoura sem ponta no bolso lateral da minha jaqueta corta-vento.
+        </div>
+        <div class="diary-entry" data-p="12">
+          <div class="diary-entry-header">Entrada #12 - Quinta-feira, 11:50</div>
+          A biblioteca estava vazia e silenciosa. Folheei um atlas histórico antigo com ilustrações sobre caravelas e rotas marítimas do século dezesseis.
+        </div>
+        <div class="diary-entry" data-p="13">
+          <div class="diary-entry-header">Entrada #13 - Sexta-feira, 07:30</div>
+          Cheguei bem mais cedo para estudar a tabuada com meu grupo de estudos. O laboratório de informática ainda estava com as luzes apagadas e trancado com chave tetra.
+        </div>
+        <div class="diary-entry" data-p="14">
+          <div class="diary-entry-header">Entrada #14 - Sexta-feira, 09:00</div>
+          Conversamos sobre os preparativos da gincana de arrecadação de alimentos. Cada turma ficou responsável por uma cor de camiseta diferente para identificação.
+        </div>
+        <!-- PARÁGRAFO 15: Frase secreta inserida no meio do 15º parágrafo -->
+        <div class="diary-entry" data-p="15" id="diario-paragrafo-15">
+          <div class="diary-entry-header">Entrada #15 - Sexta-feira, 10:35</div>
+          Passei no almoxarifado para buscar folhas de papel e pastas plásticas. Enquanto organizava os relatórios antigos na gaveta de aço, conferi as anotações sobre o meu plano. Eu escondi o arquivo na gaveta três do armário. Depois fechei a tranca com a chave de metal e voltei imediatamente para o corredor principal sem fazer barulho.
+        </div>
+        <div class="diary-entry" data-p="16">
+          <div class="diary-entry-header">Entrada #16 - Sexta-feira, 12:10</div>
+          A merenda foi torta assada com legumes picados. Havia uma fila grande perto dos pratos porque a turma do sétimo ano chegou no mesmo horário da nossa.
+        </div>
+        <div class="diary-entry" data-p="17">
+          <div class="diary-entry-header">Entrada #17 - Segunda-feira seguinte, 08:00</div>
+          Começo de uma nova semana com prova bimestral de história sobre povos antigos. Revisei o resumo feito em fichas pautadas com canetas esferográficas.
+        </div>
+        <div class="diary-entry" data-p="18">
+          <div class="diary-entry-header">Entrada #18 - Segunda-feira seguinte, 10:00</div>
+          Fui até a cantina comprar uma garrafa de água mineral gelada. O funcionário estava repondo os pacotes de biscoito de polvilho na vitrine de vidro.
+        </div>
+        <div class="diary-entry" data-p="19">
+          <div class="diary-entry-header">Entrada #19 - Terça-feira, 08:45</div>
+          Aula de artes plásticas com tinta guache e cartolina branca grossa. Pintei uma paisagem com montanhas e um lago azul sob o sol poente alaranjado.
+        </div>
+        <div class="diary-entry" data-p="20">
+          <div class="diary-entry-header">Entrada #20 - Terça-feira, 11:20</div>
+          Lavei os pincéis no tanque dos fundos e tomei cuidado para não respingar tinta vermelha no uniforme escolar novo que minha mãe comprou semana passada.
+        </div>
+        <div class="diary-entry" data-p="21">
+          <div class="diary-entry-header">Entrada #21 - Quarta-feira, 09:10</div>
+          Apresentação do trabalho de ciências sobre o ciclo da água e a importância do consumo consciente de recursos hídricos na comunidade escolar e em casa.
+        </div>
+        <div class="diary-entry" data-p="22">
+          <div class="diary-entry-header">Entrada #22 - Quarta-feira, 11:45</div>
+          Encontrei uma caneta esferográfica de quatro cores caída embaixo da mesa dos computadores. Deixei no setor de achados e perdidos da coordenação pedagógica.
+        </div>
+        <div class="diary-entry" data-p="23">
+          <div class="diary-entry-header">Entrada #23 - Quinta-feira, 08:30</div>
+          A aula de inglês ensinou verbos de ação e vocabulário sobre tecnologia, como "search", "save" e a palavra "find" que significa encontrar ou buscar.
+        </div>
+        <div class="diary-entry" data-p="24">
+          <div class="diary-entry-header">Entrada #24 - Quinta-feira, 10:50</div>
+          Fiz anotações sobre como os sistemas operacionais e navegadores possuem atalhos práticos para localizar termos instantaneamente em documentos extensos.
+        </div>
+        <div class="diary-entry" data-p="25">
+          <div class="diary-entry-header">Entrada #25 - Sexta-feira, 12:00</div>
+          Último dia antes do recesso. Todos ajudaram a empilhar as cadeiras e guardar os livros didáticos nas prateleiras identificadas por etiquetas adesivas.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="input-posicao" class="form-label" style="font-size: 1.05rem; line-height: 1.5;">
+          🗝️ Pergunta final para abrir a porta da Sala 2:
+          <br>
+          <span style="font-weight: 500; color: var(--text-muted); font-size: 0.95rem;">
+            Na frase encontrada: <em>"Eu escondi o arquivo na gaveta três do armário."</em>
+            <br>
+            <strong>"Em qual posição da frase (qual número da palavra) está a palavra que você buscou?"</strong>
+          </span>
+        </label>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+          <input 
+            type="number" 
+            id="input-posicao" 
+            class="input-field" 
+            placeholder="Digite o número da posição (ex: 1, 2, 3...)"
+            style="max-width: 300px;"
+            min="1"
+            max="30"
+          />
+          <button class="btn" id="btn-validar-posicao">
+            Abrir Porta da Sala 2 🚪🔓
+          </button>
+        </div>
+        <span class="form-hint">
+          Exemplo: Na frase <em>"Eu vejo o sol"</em>, a palavra <em>sol</em> é a 4ª palavra (1: Eu, 2: vejo, 3: o, 4: sol). Conte a frase do diário!
+        </span>
+      </div>
+
+      <div class="alert" id="alert-enigma-3"></div>
+
+      <!-- Dica Post-It do Enigma 3 -->
+      <div class="post-it-hint" id="postit-hint-3">
+        <div class="post-it-pin"></div>
+        <div class="post-it-title">
+          📌 Post-it de Dica do Inspetor (Enigma 3)
+        </div>
+        <div class="post-it-text" id="postit-text-3">
+          Pressione as teclas <strong>Ctrl + F</strong> juntas (ou use o botão "Abrir Barra de Busca"). Digite <strong>arquivo</strong> para iluminar em amarelo o 15º parágrafo. Depois, conte palavra por palavra na frase: <em>1: Eu, 2: escondi, 3: o, 4: arquivo</em>!
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         FINALIZAÇÃO: RELATÓRIO OFICIAL PARA O GOOGLE DOCS
+         ======================================================== -->
+    <section class="report-card-container" id="panel-final-report">
+      <div class="victory-badge-large">🏆</div>
+      <h2 class="victory-title">MISSÃO CUMPRIDA COM SUCESSO!</h2>
+      <p class="victory-subtitle">
+        Parabéns, Detetive do 6º Ano! Você decodificou a cifra do teclado, dominou a busca com Ctrl+F e localizou o esconderijo exato do objeto!
+      </p>
+
+      <!-- Documento Estilizado Oficial com Fonte Monospace -->
+      <div class="official-document-box">
+        <div class="official-doc-header">
+          <span style="font-weight: 800; font-size: 0.95rem; color: var(--text-main);">
+            📄 DEPARTAMENTO DE INVESTIGAÇÃO ESCOLAR
+          </span>
+          <span class="doc-seal-badge">OFICIAL #02</span>
+        </div>
+
+        <pre class="official-report-pre" id="report-text-content">1. SÍNTESE DO CASO: No prosseguimento da investigação sobre o desaparecimento do exemplar comemorativo do Livro dos Fundadores de 1954, a equipe de detetives ingressou no escritório do suspeito utilizando a credencial SALA2-BIBLIO-7492. O suspeito utilizou artifícios no teclado físico e arquivos confidenciais do computador para ocultar a localização da obra.
+
+2. EVIDÊNCIAS DESVENDADAS:
+
+Enigma do Bilhete com Defeitos: O texto corrompido deixado às pressas no computador foi restaurado manualmente tecla por tecla e transferido com sucesso ao terminal de segurança via atalhos de sistema (Ctrl+C e Ctrl+V).
+Cifra da Tecla Vizinha: Mediante reconstituição espacial das teclas físicas à esquerda na digitação da cifra STWIOBP, decodificou-se a palavra-chave confidencial: ARQUIVO.
+Varredura do Diário Digital: Utilizando a ferramenta de busca óptica por atalho de teclado (Ctrl+F), localizou-se no 15º parágrafo a confissão do suspeito: "Eu escondi o arquivo na gaveta três do armário.", com a palavra-chave validada na 4ª posição da frase.
+
+3. CONCLUSÃO E ENCAMINHAMENTO: A equipe de detetives do 6º ano quebrou todos os códigos digitais da Sala 2 e determinou a localização exata da prova material na gaveta três do armário do escritório. A liberação para o acesso à Sala 3 está autorizada sob o código verificador SALA3-ARMAR-8319.</pre>
+      </div>
+
+      <!-- Caixa de Instrução para Google Docs da Turma -->
+      <div class="docs-instruction-box">
+        <div class="docs-icon">📋</div>
+        <div class="docs-instruction-text">
+          <h4>Instrução Final de Registro:</h4>
+          <p>
+            <strong>Selecione o relatório oficial acima, use Ctrl+C para copiar e Ctrl+V para colar no Google Docs da sua turma para atualizar o caso.</strong>
+          </p>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px;">
+        <button class="btn" id="btn-copiar-relatorio">
+          📋 Copiar Relatório Oficial (Ctrl + C)
+        </button>
+        <button class="btn btn-secondary" id="btn-jogar-novamente">
+          🔄 Jogar Sala 2 Novamente
+        </button>
+      </div>
+
+      <div class="badges-earned">
+        <div class="earned-badge-card">
+          <div class="earned-badge-icon">🔐</div>
+          <div class="earned-badge-info">
+            <h4>Acesso Verificado</h4>
+            <p>Código da Sala 1 digitado com rigor</p>
+          </div>
+        </div>
+        <div class="earned-badge-card">
+          <div class="earned-badge-icon">⌨️</div>
+          <div class="earned-badge-info">
+            <h4>Mestre da Digitação</h4>
+            <p>Shift, acentos e texto sem erros</p>
+          </div>
+        </div>
+        <div class="earned-badge-card">
+          <div class="earned-badge-icon">📋</div>
+          <div class="earned-badge-info">
+            <h4>Ninja Ctrl+C / Ctrl+V</h4>
+            <p>Atalhos rápidos de copiar e colar</p>
+          </div>
+        </div>
+        <div class="earned-badge-card">
+          <div class="earned-badge-icon">🔎</div>
+          <div class="earned-badge-info">
+            <h4>Investigador Ctrl+F</h4>
+            <p>Busca instantânea no documento</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ========================================================
+       JAVASCRIPT DO ESCAPE ROOM (100% PURO E SEM DEPENDÊNCIAS)
+       ======================================================== -->
+  <script>
+    (function() {
+      "use strict";
+
+      // ----------------------------------------------------
+      // MOTOR DE ÁUDIO WEB (Efeitos sonoros nativos sintetizados)
+      // ----------------------------------------------------
+      let soundEnabled = true;
+      let audioCtx = null;
+
+      function getAudioContext() {
+        if (!audioCtx) {
+          const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+          if (AudioContextClass) {
+            audioCtx = new AudioContextClass();
+          }
+        }
+        if (audioCtx && audioCtx.state === 'suspended') {
+          audioCtx.resume();
+        }
+        return audioCtx;
+      }
+
+      function playSound(type) {
+        if (!soundEnabled) return;
+        try {
+          const ctx = getAudioContext();
+          if (!ctx) return;
+
+          const now = ctx.currentTime;
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+
+          if (type === 'click') {
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(320, now);
+            osc.frequency.exponentialRampToValueAtTime(120, now + 0.05);
+            gain.gain.setValueAtTime(0.12, now);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+            osc.start(now);
+            osc.stop(now + 0.05);
+          } else if (type === 'success') {
+            [523.25, 659.25, 783.99, 1046.50].forEach((freq, i) => {
+              const noteOsc = ctx.createOscillator();
+              const noteGain = ctx.createGain();
+              noteOsc.type = 'sine';
+              noteOsc.frequency.setValueAtTime(freq, now + i * 0.08);
+              noteGain.gain.setValueAtTime(0.14, now + i * 0.08);
+              noteGain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.08 + 0.28);
+              noteOsc.connect(noteGain);
+              noteGain.connect(ctx.destination);
+              noteOsc.start(now + i * 0.08);
+              noteOsc.stop(now + i * 0.08 + 0.3);
+            });
+          } else if (type === 'error') {
+            osc.type = 'sawtooth';
+            osc.frequency.setValueAtTime(160, now);
+            osc.frequency.setValueAtTime(120, now + 0.1);
+            gain.gain.setValueAtTime(0.18, now);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
+            osc.start(now);
+            osc.stop(now + 0.25);
+          } else if (type === 'hint') {
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(587.33, now);
+            osc.frequency.setValueAtTime(880, now + 0.12);
+            gain.gain.setValueAtTime(0.15, now);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.38);
+            osc.start(now);
+            osc.stop(now + 0.38);
+          } else if (type === 'search') {
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(440, now);
+            osc.frequency.exponentialRampToValueAtTime(660, now + 0.1);
+            gain.gain.setValueAtTime(0.12, now);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.15);
+            osc.start(now);
+            osc.stop(now + 0.15);
+          } else if (type === 'victory') {
+            const notes = [
+              { f: 523.25, d: 0.15 },
+              { f: 659.25, d: 0.15 },
+              { f: 783.99, d: 0.15 },
+              { f: 1046.50, d: 0.45 }
+            ];
+            let timeOffset = 0;
+            notes.forEach(n => {
+              const o = ctx.createOscillator();
+              const g = ctx.createGain();
+              o.type = 'triangle';
+              o.frequency.setValueAtTime(n.f, now + timeOffset);
+              g.gain.setValueAtTime(0.2, now + timeOffset);
+              g.gain.exponentialRampToValueAtTime(0.001, now + timeOffset + n.d);
+              o.connect(g);
+              g.connect(ctx.destination);
+              o.start(now + timeOffset);
+              o.stop(now + timeOffset + n.d);
+              timeOffset += n.d * 0.85;
+            });
+          }
+        } catch (e) {
+          console.warn("Áudio indisponível", e);
+        }
+      }
+
+      // ----------------------------------------------------
+      // SISTEMA DE NOTIFICAÇÕES (Toast)
+      // ----------------------------------------------------
+      function showToast(msg, type = 'info') {
+        const container = document.getElementById('toast-container');
+        if (!container) return;
+        const toast = document.createElement('div');
+        toast.className = `toast ${type === 'success' ? 'toast-success' : type === 'warning' ? 'toast-warning' : type === 'error' ? 'toast-error' : ''}`;
+        
+        let icon = '💡';
+        if (type === 'success') icon = '✅';
+        if (type === 'warning') icon = '⚠️';
+        if (type === 'error') icon = '⛔';
+
+        toast.innerHTML = `<span>${icon}</span> <span>${msg}</span>`;
+        container.appendChild(toast);
+
+        setTimeout(() => {
+          toast.style.opacity = '0';
+          setTimeout(() => toast.remove(), 300);
+        }, 4200);
+      }
+
+      // ----------------------------------------------------
+      // GERENCIADOR DE ESTADO DAS 5 ETAPAS SEQUENCIAIS
+      // ----------------------------------------------------
+      let currentStage = 0; // 0 (Acesso), 1 (Bilhete), 2 (Cifra), 3 (Diário), 4 (Relatório Oficial)
+      let timerHint = null;
+      const HINT_DELAY_MS = 180000; // 3 minutos exatos (180.000 ms)
+
+      // Gabaritos do jogo (Etapa 0 case-sensitive rigorosa com Caps Lock, demais normalizadas com .toLowerCase().trim())
+      const TARGET_CODE_STAGE_0 = "SALA2-BIBLIO-7492";
+      const TARGET_NOTE_1 = "O suspeito deixou um bilhete no computador. A mensagem secreta foi digitada com o dedo escorregando: cada letra está uma tecla para a direita da certa.";
+      const TARGET_WORD_CIPHER = "arquivo";
+      const TARGET_POSITION_3 = "4";
+
+      // Painéis e elementos
+      const cardEtapa0 = document.getElementById('card-etapa-0');
+      const cardEnigma1 = document.getElementById('card-enigma-1');
+      const cardEnigma2 = document.getElementById('card-enigma-2');
+      const cardEnigma3 = document.getElementById('card-enigma-3');
+      const panelFinalReport = document.getElementById('panel-final-report');
+
+      const stepNav0 = document.getElementById('step-nav-0');
+      const stepNav1 = document.getElementById('step-nav-1');
+      const stepNav2 = document.getElementById('step-nav-2');
+      const stepNav3 = document.getElementById('step-nav-3');
+      const stepNav4 = document.getElementById('step-nav-4');
+
+      const postitHint0 = document.getElementById('postit-hint-0');
+      const postitHint1 = document.getElementById('postit-hint-1');
+      const postitHint2 = document.getElementById('postit-hint-2');
+      const postitHint3 = document.getElementById('postit-hint-3');
+
+      // Botão de som
+      const soundBtn = document.getElementById('sound-btn');
+      soundBtn.addEventListener('click', () => {
+        soundEnabled = !soundEnabled;
+        soundBtn.textContent = soundEnabled ? '🔊 Som Ativo' : '🔇 Som Mudo';
+        if (soundEnabled) playSound('click');
+      });
+
+      // Botão de solicitação de dica
+      const hintToggleBtn = document.getElementById('hint-toggle-btn');
+      hintToggleBtn.addEventListener('click', () => {
+        playSound('click');
+        revealCurrentHint(true);
+      });
+
+      // Timer invisível de 3 minutos
+      function startHintTimer(stage) {
+        if (timerHint) {
+          clearTimeout(timerHint);
+        }
+        timerHint = setTimeout(() => {
+          revealCurrentHint(false);
+        }, HINT_DELAY_MS);
+      }
+
+      function revealCurrentHint(manualClick = false) {
+        playSound('hint');
+        if (currentStage === 0) {
+          postitHint0.style.display = 'block';
+          postitHint0.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        } else if (currentStage === 1) {
+          postitHint1.style.display = 'block';
+          postitHint1.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        } else if (currentStage === 2) {
+          postitHint2.style.display = 'block';
+          postitHint2.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        } else if (currentStage === 3) {
+          postitHint3.style.display = 'block';
+          postitHint3.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        if (manualClick) {
+          showToast("Dica do Inspetor revelada no post-it!", "info");
+        } else {
+          showToast("⏳ 3 minutos se passaram nesta etapa! O Inspetor deixou um bilhete com dica.", "warning");
+        }
+      }
+
+      function updateProgressBar(stage) {
+        stepNav0.className = 'step-item ' + (stage === 0 ? 'active' : 'completed');
+        stepNav1.className = 'step-item ' + (stage === 1 ? 'active' : stage > 1 ? 'completed' : '');
+        stepNav2.className = 'step-item ' + (stage === 2 ? 'active' : stage > 2 ? 'completed' : '');
+        stepNav3.className = 'step-item ' + (stage === 3 ? 'active' : stage > 3 ? 'completed' : '');
+        stepNav4.className = 'step-item ' + (stage === 4 ? 'completed active' : '');
+      }
+
+      startHintTimer(0);
+
+      // ====================================================
+      // ETAPA 0: Painel de Acesso (Digitação Exata & Bloqueio de Colagem)
+      // ====================================================
+      const inputCodigoAcesso = document.getElementById('input-codigo-acesso');
+      const btnAcessarSala = document.getElementById('btn-acessar-sala');
+      const alertEtapa0 = document.getElementById('alert-etapa-0');
+
+      // Restrição rigorosa: BLOQUEAR colar via e.preventDefault()
+      inputCodigoAcesso.addEventListener('paste', (e) => {
+        e.preventDefault();
+        playSound('error');
+        showAlert(alertEtapa0, 'error', '⛔ Colagem bloqueada pela trava de segurança! Digite o código tecla por tecla no teclado.');
+        showToast('Colagem bloqueada! Digite tecla por tecla.', 'error');
+      });
+
+      btnAcessarSala.addEventListener('click', () => {
+        playSound('click');
+        validarCodigoAcesso();
+      });
+
+      inputCodigoAcesso.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          playSound('click');
+          validarCodigoAcesso();
+        }
+      });
+
+      function validarCodigoAcesso() {
+        // Validação estritamente case-sensitive (respeita maiúsculas, hífens e números)
+        const typedValue = (inputCodigoAcesso.value || '').trim();
+
+        if (!typedValue) {
+          showAlert(alertEtapa0, 'error', 'Digite o código verificador no campo.');
+          playSound('error');
+          return;
+        }
+
+        if (typedValue === TARGET_CODE_STAGE_0) {
+          playSound('success');
+          showAlert(alertEtapa0, 'success', '🔓 ACESSO AUTORIZADO! Terminal liberado. Carregando Enigma 1...');
+          showToast('Credencial validada com sucesso!', 'success');
+
+          setTimeout(() => {
+            avancarParaEnigma1();
+          }, 1400);
+        } else {
+          playSound('error');
+          if (typedValue.toUpperCase() === TARGET_CODE_STAGE_0) {
+            showAlert(alertEtapa0, 'error', 'Atenção às maiúsculas! Ative a tecla Caps Lock (Fixa) no teclado para digitar SALA2-BIBLIO-7492.');
+          } else {
+            showAlert(alertEtapa0, 'error', 'Código incorreto. Ative a tecla Caps Lock (Fixa) e digite exatamente: SALA2-BIBLIO-7492 (letras maiúsculas, hífens e números).');
+          }
+        }
+      }
+
+      function avancarParaEnigma1() {
+        currentStage = 1;
+        updateProgressBar(1);
+        startHintTimer(1);
+        cardEtapa0.style.opacity = '0.7';
+        cardEtapa0.style.pointerEvents = 'none';
+        cardEnigma1.style.display = 'block';
+        cardEnigma1.scrollIntoView({ behavior: 'smooth' });
+        document.getElementById('textarea-bilhete').focus();
+      }
+
+      // ====================================================
+      // ENIGMA 1: O Bilhete com Defeitos
+      // (Parte 1: Bloqueio de Colagem | Parte 2: Atalho Ctrl+C / Ctrl+V)
+      // ====================================================
+      const textareaBilhete = document.getElementById('textarea-bilhete');
+      const btnVerificarTexto = document.getElementById('btn-verificar-texto');
+      const alertEnigma1 = document.getElementById('alert-enigma-1');
+      const pasteTerminalSection = document.getElementById('paste-terminal-section');
+      const inputPasteFinal = document.getElementById('input-paste-final');
+      const alertPasteTerminal = document.getElementById('alert-paste-terminal');
+
+      let textCorrectionPassed = false;
+
+      // Restrição rigorosa Parte 1: BLOQUEAR paste no textarea para forçar digitação manual!
+      textareaBilhete.addEventListener('paste', (e) => {
+        e.preventDefault();
+        playSound('error');
+        showAlert(alertEnigma1, 'error', '⛔ Colagem bloqueada! Esta etapa treina sua digitação e acentuação manual. Digite tecla por tecla.');
+        showToast('Colagem proibida no bilhete! Digite tecla por tecla.', 'error');
+      });
+
+      function cleanSpaces(str) {
+        return (str || '')
+          .trim()
+          .replace(/\s+/g, ' ');
+      }
+
+      btnVerificarTexto.addEventListener('click', () => {
+        playSound('click');
+        const userText = textareaBilhete.value;
+        const cleanUser = cleanSpaces(userText);
+        const cleanTarget = cleanSpaces(TARGET_NOTE_1);
+
+        if (!cleanUser) {
+          showAlert(alertEnigma1, 'error', 'Por favor, digite o texto corrigido no campo antes de verificar.');
+          playSound('error');
+          return;
+        }
+
+        const errors = [];
+
+        // Detecção rigorosa de Caixa Alta (Caps Lock ativo indevidamente)
+        const upperWords = userText.match(/\b[A-ZÁÉÍÓÚÂÊÔÃÕÇ]{2,}\b/g);
+        if (upperWords && upperWords.length > 0) {
+          errors.push('🚫 Texto em CAIXA ALTA não é permitido! Desative a tecla Caps Lock (Fixa) do teclado. Use a tecla Shift apenas para as duas iniciais maiúsculas ("O" e "A").');
+        }
+
+        if (!userText.startsWith('O')) {
+          errors.push('A primeira palavra deve iniciar com letra maiúscula ("O suspeito..."). Use Shift!');
+        } else if (userText.startsWith('O ') || userText.startsWith('O S')) {
+          if (userText.startsWith('O S') || userText.startsWith('O SUSPEITO')) {
+            errors.push('Apenas a letra "O" deve ser maiúscula. A palavra "suspeito" deve ser escrita em minúsculas.');
+          }
+        }
+
+        if (userText.toLowerCase().includes('deixouu')) {
+          errors.push('Atenção à letra duplicada na palavra "deixouu". O correto é "deixou".');
+        }
+        if (userText.toLowerCase().includes('computadr')) {
+          errors.push('Está faltando a letra "o" na palavra "computadr". O correto é "computador".');
+        }
+        if (!userText.includes('. A') && !userText.includes('.  A') && !userText.includes('computador. A')) {
+          errors.push('Depois do ponto final de "computador.", inicie a frase seguinte com maiúscula: "A mensagem...".');
+        }
+        if (userText.toLowerCase().includes('esta uma') && !userText.includes('está uma')) {
+          errors.push('Falta o acento agudo na palavra "está" (cada letra está...).');
+        }
+
+        // Validação estrita: casing exato e sem erros
+        if (cleanUser === cleanTarget && errors.length === 0) {
+          textCorrectionPassed = true;
+          showAlert(alertEnigma1, 'success', '✨ Excelente! Você corrigiu o bilhete com a acentuação e as maiúsculas/minúsculas corretas. Agora realize a validação de atalho abaixo!');
+          playSound('success');
+          pasteTerminalSection.style.display = 'block';
+          pasteTerminalSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          inputPasteFinal.focus();
+        } else {
+          playSound('error');
+          if (errors.length > 0) {
+            showAlert(alertEnigma1, 'error', 'Quase lá! Ajuste os seguintes detalhes:<br>• ' + errors.join('<br>• '));
+          } else {
+            showAlert(alertEnigma1, 'error', 'O texto ainda possui divergências de letras maiúsculas/minúsculas ou acentuação. Lembre-se: não digite em caixa alta!');
+          }
+        }
+      });
+
+      // Mecânica Parte 2: Input final SÓ aceita se vier através de evento de paste
+      let lastActionWasPaste = false;
+
+      inputPasteFinal.addEventListener('keydown', (e) => {
+        const isPasteShortcut = (e.ctrlKey || e.metaKey) && (e.key === 'v' || e.key === 'V');
+        const isNavigation = ['Tab', 'ArrowLeft', 'ArrowRight', 'Backspace', 'Delete'].includes(e.key);
+
+        if (!isPasteShortcut && !isNavigation && !e.ctrlKey && !e.metaKey) {
+          e.preventDefault();
+          playSound('error');
+          showAlert(alertPasteTerminal, 'error', '⛔ Digitação manual bloqueada! Use o atalho Ctrl + C no texto corrigido acima e cole com Ctrl + V neste campo.');
+          showToast('Use Ctrl + C para copiar e Ctrl + V para colar!', 'warning');
+        }
+      });
+
+      inputPasteFinal.addEventListener('paste', (e) => {
+        lastActionWasPaste = true;
+        const pastedText = (e.clipboardData || window.clipboardData).getData('text');
+        
+        setTimeout(() => {
+          validarTextoColado(pastedText || inputPasteFinal.value);
+        }, 50);
+      });
+
+      function validarTextoColado(content) {
+        if (!textCorrectionPassed) {
+          showAlert(alertPasteTerminal, 'error', 'Você deve primeiro corrigir o texto no passo anterior.');
+          playSound('error');
+          return;
+        }
+
+        if (!lastActionWasPaste) {
+          showAlert(alertPasteTerminal, 'error', 'Este campo só aceita inserção através do atalho de colar (Ctrl + V).');
+          playSound('error');
+          return;
+        }
+
+        const cleanPasted = cleanSpaces(content);
+        const cleanTarget = cleanSpaces(TARGET_NOTE_1);
+
+        // Validação estrita: não aceita texto colado em caixa alta
+        if (cleanPasted === cleanTarget) {
+          playSound('success');
+          showAlert(alertPasteTerminal, 'success', '🎉 Atalho validado com sucesso! O sistema confirmou o uso de Ctrl + C e Ctrl + V.');
+          showToast('Enigma 1 concluído! Revelando Enigma 2...', 'success');
+
+          setTimeout(() => {
+            avancarParaEnigma2();
+          }, 1400);
+        } else {
+          playSound('error');
+          if (cleanPasted.toUpperCase() === cleanTarget.toUpperCase() && cleanPasted !== cleanTarget) {
+            showAlert(alertPasteTerminal, 'error', 'O texto colado está em CAIXA ALTA! Você precisa corrigir o texto no campo de cima com letras minúsculas e colar novamente.');
+          } else {
+            showAlert(alertPasteTerminal, 'error', 'O texto colado não corresponde ao bilhete corrigido com precisão. Copie todo o conteúdo com atenção.');
+          }
+        }
+      }
+
+      function avancarParaEnigma2() {
+        currentStage = 2;
+        updateProgressBar(2);
+        startHintTimer(2);
+        cardEnigma1.style.opacity = '0.7';
+        cardEnigma1.style.pointerEvents = 'none';
+        cardEnigma2.style.display = 'block';
+        cardEnigma2.scrollIntoView({ behavior: 'smooth' });
+        document.getElementById('input-cifra').focus();
+      }
+
+      // ====================================================
+      // ENIGMA 2: A Cifra da Tecla Vizinha (Mapeamento do Teclado)
+      // ====================================================
+      const inputCifra = document.getElementById('input-cifra');
+      const btnValidarCifra = document.getElementById('btn-validar-cifra');
+      const alertEnigma2 = document.getElementById('alert-enigma-2');
+      const btnToggleKeyboard = document.getElementById('btn-toggle-keyboard');
+      const keyboardGraphicBox = document.getElementById('keyboard-graphic-box');
+      const labelToggleKb = document.getElementById('label-toggle-kb');
+
+      btnToggleKeyboard.addEventListener('click', () => {
+        playSound('click');
+        const isOpen = keyboardGraphicBox.style.display === 'flex';
+        keyboardGraphicBox.style.display = isOpen ? 'none' : 'flex';
+        labelToggleKb.textContent = isOpen ? 'Mostrar Mapa do Teclado (Ajuda Visual)' : 'Ocultar Mapa do Teclado';
+      });
+
+      btnValidarCifra.addEventListener('click', () => {
+        playSound('click');
+        validarRespostaCifra();
+      });
+
+      inputCifra.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          playSound('click');
+          validarRespostaCifra();
+        }
+      });
+
+      function validarRespostaCifra() {
+        const val = (inputCifra.value || '').toLowerCase().trim();
+
+        if (!val) {
+          showAlert(alertEnigma2, 'error', 'Digite a palavra decifrada antes de validar.');
+          playSound('error');
+          return;
+        }
+
+        if (val === TARGET_WORD_CIPHER) {
+          playSound('success');
+          showAlert(alertEnigma2, 'success', '🎯 Brilhante! Você usou as teclas vizinhas à esquerda e decodificou: ARQUIVO!');
+          showToast('Palavra decifrada: ARQUIVO!', 'success');
+
+          setTimeout(() => {
+            avancarParaEnigma3();
+          }, 1400);
+        } else {
+          playSound('error');
+          if (val.length !== 7) {
+            showAlert(alertEnigma2, 'error', `A cifra STWIOBP tem 7 letras, então a palavra secreta também deve ter 7 letras (você digitou ${val.length}).`);
+          } else if (val.startsWith('a')) {
+            showAlert(alertEnigma2, 'error', 'Bom começo! À esquerda de S está a tecla A. Agora confira as teclas à esquerda de T, W, I, O, B e P.');
+          } else {
+            showAlert(alertEnigma2, 'error', 'Palavra incorreta. Olhe o teclado físico e digite a tecla que fica à ESQUERDA de cada letra de STWIOBP.');
+          }
+        }
+      }
+
+      function avancarParaEnigma3() {
+        currentStage = 3;
+        updateProgressBar(3);
+        startHintTimer(3);
+        cardEnigma2.style.opacity = '0.7';
+        cardEnigma2.style.pointerEvents = 'none';
+        cardEnigma3.style.display = 'block';
+        cardEnigma3.scrollIntoView({ behavior: 'smooth' });
+        document.getElementById('input-posicao').focus();
+      }
+
+      // ====================================================
+      // ENIGMA 3: O Diário do Suspeito (Busca Customizada com Ctrl+F)
+      // ====================================================
+      const inGameSearchBar = document.getElementById('in-game-search-bar');
+      const customSearchInput = document.getElementById('custom-search-input');
+      const searchResultCount = document.getElementById('search-result-count');
+      const btnCloseSearch = document.getElementById('btn-close-search');
+      const btnTriggerSearch = document.getElementById('btn-trigger-search');
+      const diaryBox = document.getElementById('diary-box');
+
+      const diaryEntries = Array.from(document.querySelectorAll('.diary-entry'));
+      const originalEntriesHTML = diaryEntries.map(entry => entry.innerHTML);
+
+      // INTERCEPTADOR GLOBAL DE Ctrl+F / Cmd+F:
+      // Impede a busca nativa do navegador e aciona a barra de busca estilizada do jogo
+      window.addEventListener('keydown', (e) => {
+        if ((e.ctrlKey || e.metaKey) && (e.key === 'f' || e.key === 'F')) {
+          e.preventDefault(); // IMPEDE A BUSCA NATIVA DO NAVEGADOR!
+          openInGameSearch();
+        } else if (e.key === 'Escape' && inGameSearchBar.style.display !== 'none') {
+          closeInGameSearch();
+        }
+      });
+
+      btnTriggerSearch.addEventListener('click', () => {
+        openInGameSearch();
+      });
+
+      btnCloseSearch.addEventListener('click', () => {
+        closeInGameSearch();
+      });
+
+      function openInGameSearch() {
+        playSound('search');
+        inGameSearchBar.style.display = 'flex';
+        customSearchInput.focus();
+        customSearchInput.select();
+        showToast('🔍 Busca do Sistema ativada! Digite a palavra decifrada.', 'info');
+      }
+
+      function closeInGameSearch() {
+        playSound('click');
+        inGameSearchBar.style.display = 'none';
+        limparDestaquesDiario();
+      }
+
+      function limparDestaquesDiario() {
+        diaryEntries.forEach((entry, idx) => {
+          entry.innerHTML = originalEntriesHTML[idx];
+          entry.style.background = '';
+        });
+        searchResultCount.textContent = '0 encontrados';
+      }
+
+      customSearchInput.addEventListener('input', () => {
+        const query = customSearchInput.value.trim();
+
+        if (!query || query.length < 2) {
+          limparDestaquesDiario();
+          return;
+        }
+
+        let totalMatches = 0;
+        let firstMatchElement = null;
+
+        const safeQuery = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const regex = new RegExp(`(${safeQuery})`, 'gi');
+
+        diaryEntries.forEach((entry, idx) => {
+          const originalHTML = originalEntriesHTML[idx];
+          if (regex.test(originalHTML)) {
+            const matches = originalHTML.match(regex);
+            totalMatches += matches ? matches.length : 0;
+
+            entry.innerHTML = originalHTML.replace(regex, '<mark class="diary-highlight">$1</mark>');
+
+            if (!firstMatchElement) {
+              firstMatchElement = entry.querySelector('mark.diary-highlight') || entry;
+            }
+          } else {
+            entry.innerHTML = originalHTML;
+          }
+        });
+
+        searchResultCount.textContent = `${totalMatches} ${totalMatches === 1 ? 'encontrado' : 'encontrados'}`;
+
+        if (firstMatchElement) {
+          firstMatchElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      });
+
+      const inputPosicao = document.getElementById('input-posicao');
+      const btnValidarPosicao = document.getElementById('btn-validar-posicao');
+      const alertEnigma3 = document.getElementById('alert-enigma-3');
+
+      btnValidarPosicao.addEventListener('click', () => {
+        playSound('click');
+        validarRespostaPosicao();
+      });
+
+      inputPosicao.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          playSound('click');
+          validarRespostaPosicao();
+        }
+      });
+
+      function validarRespostaPosicao() {
+        const val = (inputPosicao.value || '').trim();
+
+        if (!val) {
+          showAlert(alertEnigma3, 'error', 'Digite o número da posição da palavra na frase.');
+          playSound('error');
+          return;
+        }
+
+        if (val === TARGET_POSITION_3) {
+          playSound('victory');
+          showAlert(alertEnigma3, 'success', '🔓 PORTA DESBLOQUEADA! Posição 4 confirmada: "1: Eu, 2: escondi, 3: o, 4: arquivo"!');
+          showToast('🏆 Enigma 3 superado! Gerando Relatório Oficial...', 'success');
+
+          setTimeout(() => {
+            exibirRelatorioFinal();
+          }, 1500);
+        } else {
+          playSound('error');
+          showAlert(alertEnigma3, 'error', 'Número incorreto. Use a busca do Ctrl+F para ver a frase: "Eu escondi o arquivo na gaveta três do armário." e conte a posição da palavra "arquivo"!');
+        }
+      }
+
+      // ====================================================
+      // ETAPA 4 (FINALIZAÇÃO): RELATÓRIO OFICIAL PARA GOOGLE DOCS
+      // ====================================================
+      function exibirRelatorioFinal() {
+        currentStage = 4;
+        updateProgressBar(4);
+        if (timerHint) clearTimeout(timerHint);
+
+        cardEtapa0.style.display = 'none';
+        cardEnigma1.style.display = 'none';
+        cardEnigma2.style.display = 'none';
+        cardEnigma3.style.display = 'none';
+        panelFinalReport.style.display = 'block';
+        panelFinalReport.scrollIntoView({ behavior: 'smooth' });
+
+        dispararConfete();
+      }
+
+      const btnCopiarRelatorio = document.getElementById('btn-copiar-relatorio');
+      const reportTextContent = document.getElementById('report-text-content');
+
+      btnCopiarRelatorio.addEventListener('click', () => {
+        playSound('click');
+        const textToCopy = reportTextContent.innerText.trim();
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(textToCopy).then(() => {
+            showToast('📋 Relatório copiado com Ctrl+C! Cole agora no Google Docs da turma com Ctrl+V.', 'success');
+            playSound('success');
+          }).catch(() => {
+            selecionarTextoManualmente();
+          });
+        } else {
+          selecionarTextoManualmente();
+        }
+      });
+
+      function selecionarTextoManualmente() {
+        const range = document.createRange();
+        range.selectNodeContents(reportTextContent);
+        const sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+        showToast('Texto selecionado! Pressione Ctrl + C no teclado para copiar e Ctrl + V no Google Docs.', 'info');
+      }
+
+      document.getElementById('btn-jogar-novamente').addEventListener('click', () => {
+        playSound('click');
+        window.location.reload();
+      });
+
+      // ----------------------------------------------------
+      // HELPER: Alertas estilizados
+      // ----------------------------------------------------
+      function showAlert(el, type, message) {
+        if (!el) return;
+        el.className = `alert alert-${type} show`;
+        let icon = type === 'success' ? '✅' : type === 'error' ? '❌' : 'ℹ️';
+        el.innerHTML = `<span>${icon}</span> <div>${message}</div>`;
+      }
+
+      // ----------------------------------------------------
+      // ANIMAÇÃO DE CONFETE NATIVA (Canvas puro)
+      // ----------------------------------------------------
+      function dispararConfete() {
+        const canvas = document.getElementById('confetti-canvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
+
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        const colors = ['#C85A32', '#E87738', '#F59E0B', '#15803D', '#3B82F6', '#EC4899'];
+        const particles = [];
+        const particleCount = 130;
+
+        for (let i = 0; i < particleCount; i++) {
+          particles.push({
+            x: width * 0.5,
+            y: height * 0.3,
+            r: Math.random() * 6 + 4,
+            d: Math.random() * particleCount,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            tilt: Math.floor(Math.random() * 10) - 10,
+            tiltAngleInc: (Math.random() * 0.07) + 0.05,
+            tiltAngle: 0,
+            vx: (Math.random() - 0.5) * 16,
+            vy: (Math.random() - 0.8) * 14 - 3,
+            gravity: 0.25
+          });
+        }
+
+        let animationFrameId;
+        let frames = 0;
+
+        function draw() {
+          ctx.clearRect(0, 0, width, height);
+          frames++;
+
+          particles.forEach((p) => {
+            p.tiltAngle += p.tiltAngleInc;
+            p.y += p.vy;
+            p.x += p.vx;
+            p.vy += p.gravity;
+            p.vx *= 0.99;
+            p.tilt = Math.sin(p.tiltAngle) * 12;
+
+            ctx.beginPath();
+            ctx.lineWidth = p.r;
+            ctx.strokeStyle = p.color;
+            ctx.moveTo(p.x + p.tilt + p.r / 2, p.y);
+            ctx.lineTo(p.x + p.tilt, p.y + p.tilt + p.r / 2);
+            ctx.stroke();
+          });
+
+          if (frames < 240) {
+            animationFrameId = requestAnimationFrame(draw);
+          } else {
+            ctx.clearRect(0, 0, width, height);
+            cancelAnimationFrame(animationFrameId);
+          }
+        }
+
+        draw();
+
+        window.addEventListener('resize', () => {
+          width = canvas.width = window.innerWidth;
+          height = canvas.height = window.innerHeight;
+        });
+      }
+
+    })();
+  </script>
+</body>
+</html>

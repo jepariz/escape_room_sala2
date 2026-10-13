@@ -1,0 +1,6 @@
+{
+  "name": "Escape Room Educativo - Sala 2",
+  "description": "Escape Room investigativo para treino de digitação, acentuação e atalhos de teclado (Ctrl+C, Ctrl+V, Ctrl+F) para o 6º ano.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
